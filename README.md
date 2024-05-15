@@ -1,7 +1,7 @@
 ## HAVE TO FIXED
-1. pilihan staisun ✅
-2. loading fun fact  ✅
-3. pilih opsi ✅
+1. pilihan lokasi by api
+2. result totem by lokasi api
+3. gambar border white
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

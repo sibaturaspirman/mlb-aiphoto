@@ -3,8 +3,8 @@
 import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
-import { Poppins} from "next/font/google";
-const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+// import { Poppins} from "next/font/google";
+// const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // import io from 'socket.io-client';
@@ -112,7 +112,7 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://mlb-aiphoto.vercel.app/style/'+gender+'-'+number+'.jpeg'
+        const urlGambar = 'https://mlb-aiphoto.vercel.app/style/'+gender+'-new-'+number+'.jpeg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();

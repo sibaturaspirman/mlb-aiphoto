@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 // import TopLogoAmero from "../components/TopLogoAmero";
-import { Poppins} from "next/font/google";
-const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+// import { Poppins} from "next/font/google";
+// const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 

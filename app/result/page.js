@@ -6,8 +6,8 @@ import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
-import { Poppins} from "next/font/google";
-const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+// import { Poppins} from "next/font/google";
+// const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // import BtnHexagon2 from "../components/BtnHexagon2";
 
 
