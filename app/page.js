@@ -20,7 +20,7 @@ export default function MLBHome() {
 }
 
   return (
-    <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center pt-16 pb-5 px-5 lg:pt-12 lg:px-20">
+    <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center  py-16 px-20">
       <div className="relative w-[90%] mt-5 mb-10 lg:mt-20 lg:mb-14">
         <div className='relative w-full hiddenx'>
             <label htmlFor="choose_stasiun" className={`block mb-5 lg:mb-5 text-2xl lg:text-5xl text-center font-bold text-white ${poppins.className}`}>Pilih Lokasi</label>

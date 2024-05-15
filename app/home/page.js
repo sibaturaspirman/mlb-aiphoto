@@ -64,7 +64,7 @@ export default function MLBHome() {
   })
 
   return (
-    <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center pt-16 pb-5 px-20 top-[-4vh]">
+    <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center py-16 px-20 top-0">
       <div className='fixed top-24 w-[95%]'>
           <Image src='/title-scan.png' width={823} height={221} alt='Zirolu' className='w-full' priority />
       </div>
