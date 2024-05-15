@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-import TopLogoAmero from "../components/TopLogoAmero";
+// import TopLogoAmero from "../components/TopLogoAmero";
 import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
