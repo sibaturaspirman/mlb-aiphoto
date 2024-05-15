@@ -112,7 +112,7 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://mlb-aiphoto.vercel.app/style/'+gender+'-new-'+number+'.jpeg'
+        const urlGambar = 'https://mlb-aiphoto.vercel.app/style/'+gender+'-fix-'+number+'.jpeg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();
