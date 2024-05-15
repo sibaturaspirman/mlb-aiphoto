@@ -251,6 +251,11 @@ body {
   background-size: cover;
   background-position: top center;
 }
+.bg-kai3{
+  background-image: url(../public/bg-white.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
 
 /* AMERO */
 /* .bg-amero{
