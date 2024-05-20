@@ -7,8 +7,8 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AI Photo Booth - Zirolu.id",
-  description: "AI Photo Booth developed by zirolu.id",
+  title: "AI Photo Booth - Marlboro",
+  description: "AI Photo Booth developed by antigravity",
 };
 
 export default function RootLayout({ children }) {

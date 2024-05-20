@@ -25,8 +25,16 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const DEFAULT_NEG_PROMPT = '(((boobs))), (((sexy))), (((cleavage))), extra head, extra face, double head, double face, (((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
+let FIXSEEDPILIH = 0
+let seedGenerate = [
+    {number : 13290},
+    {number : 13294},
+    {number : 13084},
+    {number : 13229}
+];
 export default function GenerateAmero() {
     const router = useRouter();
 
@@ -36,6 +44,16 @@ export default function GenerateAmero() {
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
+
+
+    const [prompt1, setPrompt1] = useState();
+    const [prompt2, setPrompt2] = useState('Samurai Ninja Full Body with cyborg ninja boots and sword blade and futuristic machine guns. Matrix Red light, Cyberpunk Neon Red Light, Conceptual artwork of the human mind, studio portrait style, intricate neural network details at the center, popular on ArtStation, digital painting, sharp focus, highly detailed, enigmatic atmosphere, dramatic lighting, evoking a sense of mystery, atmospheric chiaroscuro, trend-centric composition, digital rendering.');
+    let promptCombine = prompt1 + prompt2;
+    const negative_prompt = DEFAULT_NEG_PROMPT;
+    const [fixSeed, setFixSeed] = useState(null);
+    const [CGF, setCGF] = useState(12);
+    const [numSteps, setNumSteps] = useState(75);
+
     // Result state
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -53,17 +71,25 @@ export default function GenerateAmero() {
     }, [imageFile])
 
     const generateAI = () => {
-        setNumProses1(true)
+        // setNumProses1(true)
         
-        if(styleGender =='m'){
-            setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 4))
-            }, 500);
-        }else if(styleGender =='f'){
-            setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 6))
-            }, 500);
-        }
+        // if(styleGender =='m'){
+        //     setTimeout(() => {
+        //         generateImageSwap(styleGender, getRandomInt(1, 4))
+        //     }, 500);
+        // }else if(styleGender =='f'){
+        //     setTimeout(() => {
+        //         generateImageSwap(styleGender, getRandomInt(1, 6))
+        //     }, 500);
+        // }
+
+        setNumProses1(true)
+        FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
+        console.log(FIXSEEDPILIH)
+
+        setTimeout(() => {
+            generateImage()
+        }, 500);
 
     }
 
@@ -110,10 +136,58 @@ export default function GenerateAmero() {
         reader.readAsDataURL(blob)
     }))
 
-
-    const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://mlb-aiphoto.vercel.app/style/fix/'+gender+'-fix-'+number+'.jpeg'
-        console.log(urlGambar)
+    // WIDTH FIX : 624x664 | 624x744 | 624x784 | 624x792 | 624x832 | 624x864 | 624x872
+    const generateImage = async () => {
+        setNumProses(1)
+      reset();
+      // @snippet:start("client.queue.subscribe")
+      setLoading(true);
+      const start = Date.now();
+      try {
+        const result = await fal.subscribe(
+          'fal-ai/ip-adapter-face-id',
+          {
+            input: {
+                // model_type: '1_5-v1-plus',
+              prompt: promptCombine,
+              face_image_url: imageFile,
+              negative_prompt,
+              guidance_scale: CGF,
+              num_inference_steps: numSteps,
+            //   seed: seedGenerate[getRandomInt(0,1)].number,
+              seed: FIXSEEDPILIH,
+              width: 624,
+              height: 864
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+              setElapsedTime(Date.now() - start);
+              if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+              ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                // console.log(update)
+              }
+            },
+          }
+        );
+        setResult(result);
+        URL_RESULT = result.image.url
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("generateURLResult", URL_RESULT)
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+        setElapsedTime(Date.now() - start);
+        generateImageSwap()
+      }
+      // @snippet:end
+    };
+    const generateImageSwap = async () => {
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -124,9 +198,7 @@ export default function GenerateAmero() {
             'fal-ai/face-swap',
             {
             input: {
-                // base_image_url: URL_RESULT,
-                // swap_image_url: '/amero/base/'+character
-                base_image_url: urlGambar,
+                base_image_url: URL_RESULT,
                 swap_image_url: imageFile
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
@@ -157,7 +229,7 @@ export default function GenerateAmero() {
             }
         
             setTimeout(() => {
-                router.push('/result');
+                router.push('/v2/result');
             }, 500);
         })
         } catch (error) {
@@ -184,7 +256,7 @@ export default function GenerateAmero() {
                         {error}
                     </div>
 
-                    <pre className='relative p-5 mt-24 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[150px] w-[60%] mx-auto rounded-lg'>
+                    <pre className='relative p-5 mt-24 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg flex flex-col-reverse'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
@@ -212,8 +284,8 @@ export default function GenerateAmero() {
                                     id='choose_gender1'
                                     type="radio"
                                     name='choose_gender'
-                                    value="m"
-                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    value="Man, "
+                                    onChange={(e) => setPrompt1(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender1">
                                         <Image
@@ -231,8 +303,8 @@ export default function GenerateAmero() {
                                     id='choose_gender2'
                                     type="radio"
                                     name='choose_gender'
-                                    value="f"
-                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    value="Woman, "
+                                    onChange={(e) => setPrompt1(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender2">
                                         <Image
@@ -251,10 +323,10 @@ export default function GenerateAmero() {
                 </div>
                 <div className={`fixed left-0 bottom-14 w-full`}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                        <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
+                        <button className={`w-full relative mx-auto flex justify-center items-center ${!prompt1 ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='/home' className="relative w-full mx-auto flex justify-center items-center">
+                        <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>

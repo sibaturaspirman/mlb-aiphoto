@@ -84,7 +84,7 @@ export default function Result() {
     
 
     return (
-        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-top items-center py-16 px-20">
+        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
@@ -137,25 +137,25 @@ export default function Result() {
                     <Image src='/title-discover.png' width={626} height={160} alt='Zirolu' className='w-full' priority />
                 </div>*/}
                 {imageResultAI && 
-                <div className='relative w-[75%] mt-10 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
-                    <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
-                        <Image src={imageResultAI}  width={1080} height={1920} alt='Zirolu' className='relative block w-full'></Image> 
+                <div className='relative w-[92%] mt-10 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
+                    <div className='relative w-full' id='capture' ref={(el) => (componentRef = el)}>
+                        <Image src={imageResultAI}  width={624} height={864} alt='Zirolu' className='relative block w-full'></Image> 
                     </div>
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='rrelative p-5 mt-14 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-4xl overflow-auto no-scrollbar w-[60%] mx-auto rounded-lg'>
+                    <div className='rrelative p-5 mt-14 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-4xl overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-14`}>
-                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
                                     <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
                                 </div>
-                                <Link href='/home' className="relative w-full mx-auto flex justify-center items-center">
+                                <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center">
                                     <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>
