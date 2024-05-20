@@ -373,11 +373,13 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-wrap: wrap;
 }
 .choose2-amero li{
   display: block;
   position: relative;
   margin-right: 15px;
+  margin-bottom: 15px;
   width: 33.333%;
 }
 .choose2-amero li:last-child{

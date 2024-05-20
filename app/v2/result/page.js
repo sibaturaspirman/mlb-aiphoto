@@ -123,7 +123,7 @@ export default function Result() {
 
                     <div className={`fixed left-0 bottom-0 w-full`}>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
+                            <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
                                 <Image src='/btn-back2.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
