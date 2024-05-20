@@ -157,7 +157,7 @@ export default function GenerateAmero() {
             //   seed: seedGenerate[getRandomInt(0,1)].number,
               seed: FIXSEEDPILIH,
               width: 624,
-              height: 784
+              height: 832
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
