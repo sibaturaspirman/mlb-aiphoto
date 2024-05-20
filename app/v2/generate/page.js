@@ -25,7 +25,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const DEFAULT_NEG_PROMPT = '(((double head))), (((double face))), (((duplicate))), (((boobs))), (((sexy))), (((cleavage))), extra head, extra face, (((((ugly)))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
+const DEFAULT_NEG_PROMPT = '(((double head))), (((double face))), (((duplicate))), (((cloned face))), (((boobs))), (((sexy))), (((cleavage))), extra head, extra face, (((((ugly)))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
 let FIXSEEDPILIH = 0
