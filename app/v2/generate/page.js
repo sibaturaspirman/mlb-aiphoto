@@ -256,7 +256,7 @@ export default function GenerateAmero() {
                         {error}
                     </div>
 
-                    <pre className='relative p-5 mt-24 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg flex flex-col-reverse'>
+                    <pre className='relative p-5 mt-24 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
