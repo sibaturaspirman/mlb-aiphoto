@@ -139,7 +139,7 @@ export default function Result() {
                 {imageResultAI && 
                 <div className='relative w-[92%] mt-10 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
                     <div className='relative w-full' id='capture' ref={(el) => (componentRef = el)}>
-                        <Image src={imageResultAI}  width={624} height={864} alt='Zirolu' className='relative block w-full'></Image> 
+                        <Image src={imageResultAI}  width={624} height={784} alt='Zirolu' className='relative block w-full'></Image> 
                     </div>
                 </div>
                 }
