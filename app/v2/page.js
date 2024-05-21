@@ -9,6 +9,8 @@ import { Poppins} from "next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 
 export default function MLBHome() {
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
   const router = useRouter();
   const [stasiun, setStasiun] = useState(null);
   const [data, setData] = useState(null)

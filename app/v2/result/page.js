@@ -12,6 +12,8 @@ import { useQRCode } from 'next-qrcode';
 
 
 export default function Result() {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  
     const [imageResultAI, setImageResultAI] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');

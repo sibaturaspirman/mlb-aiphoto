@@ -24,6 +24,8 @@ const useWebcam = ({
 // let waktuBatasTake;
 
 export default function Cam() {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
