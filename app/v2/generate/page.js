@@ -53,6 +53,14 @@ let seedGenerate3Woman = [
     {number : 34122},
     {number : 16222}
 ];
+let seedGenerate4 = [
+    {number : 14126},
+    {number : 13364}
+];
+let seedGenerate5 = [
+    {number : 13144},
+    {number : 13364}
+];
 export default function GenerateAmero() {
     const router = useRouter();
 
@@ -94,7 +102,7 @@ export default function GenerateAmero() {
         // FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
 
         let styleRandom = getRandomInt(1,5);
-        // let styleRandom = 5
+        // let styleRandom = 4
         if(styleRandom == 1){
             if(prompt1 == 'Woman, '){
                 promptCombine2 = 'A Woman Samurai Ninja Full Body with cyborg ninja boots and sword blade and futuristic machine guns. Matrix Red light, Cyberpunk Neon Red Light, Conceptual artwork of the human mind, studio portrait style, intricate neural network details at the center, popular on ArtStation, digital painting, sharp focus, highly detailed, enigmatic atmosphere, dramatic lighting, evoking a sense of mystery, atmospheric chiaroscuro, trend-centric composition, digital rendering.'
@@ -124,20 +132,20 @@ export default function GenerateAmero() {
         }else if(styleRandom == 4){
             if(prompt1 == 'Woman, '){
                 promptCombine2 = "A photorealistic image of a woman surrounded by (((red cyber effects))), embodying the essence of a supercomputer and digital technology. The image includes elements such as digital codes, circuits, and (((red holographic interfaces))), creating a visual transition into the cyber world. The man's face and body seamlessly integrate with these technological elements, highlighting the advanced interconnected nature of cyber technology. Realistic Photograph, Medium Shot, capturing the detailed fusion of human and digital technology with vibrant colors and red glitch effects, high resolution, hyper detailed, UHD."
-                FIXSEEDPILIH = 14126
+                // FIXSEEDPILIH = 13364
             }else{
                 promptCombine2 = "A photorealistic image of a man surrounded by (((red cyber effects))), embodying the essence of a supercomputer and digital technology. The image includes elements such as digital codes, circuits, and (((red holographic interfaces))), creating a visual transition into the cyber world. The man's face and body seamlessly integrate with these technological elements, highlighting the advanced interconnected nature of cyber technology. Realistic Photograph, Medium Shot, capturing the detailed fusion of human and digital technology with vibrant colors and red glitch effects, high resolution, hyper detailed, UHD."
-                FIXSEEDPILIH = 14126
+                // FIXSEEDPILIH = 13364
             }
+            FIXSEEDPILIH = seedGenerate4[getRandomInt(0,1)].number
             promptSteps = 50
         }else if(styleRandom == 5){
             if(prompt1 == 'Woman, '){
                 promptCombine2 = "In a realm where quantum mysteries unfold, there stands the Supercomputer Woman. His face, a fusion of human and machine, glows with circuit (((red patterns))) and microchips. Over his features dances a quantum display: entangled particles, wave functions, and holographic grids in (((vibrant red))). The interplay of soft and stark lighting adds depth, emphasizing his profound intelligence and the seamless union of human and quantum power."
-                FIXSEEDPILIH = 13144
             }else{
                 promptCombine2 = "In a realm where quantum mysteries unfold, there stands the Supercomputer Man. His face, a fusion of human and machine, glows with circuit (((red patterns))) and microchips. Over his features dances a quantum display: entangled particles, wave functions, and holographic grids in (((vibrant red))). The interplay of soft and stark lighting adds depth, emphasizing his profound intelligence and the seamless union of human and quantum power."
-                FIXSEEDPILIH = 13144
             }
+            FIXSEEDPILIH = seedGenerate5[getRandomInt(0,1)].number
             promptSteps = 50
         }
         console.log(styleRandom)
