@@ -104,7 +104,7 @@ export default function Cam() {
         setEnabled(false)
     }
     return (
-        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
+        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className='fixed top-14 w-[65%]'>
                 <Image src='/title-take.png' width={823} height={221} alt='Zirolu' className='w-full' priority />
             </div>

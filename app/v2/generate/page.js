@@ -278,7 +278,7 @@ export default function GenerateAmero() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20">
+        <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
             {numProses1 && 
                 <div className='absolute top-[-18vh] left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
                     <div className='relative w-[80%] overflow-hidden'>
