@@ -93,8 +93,8 @@ export default function GenerateAmero() {
         setNumProses1(true)
         // FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
 
-        // let styleRandom = getRandomInt(1,5);
-        let styleRandom = 1
+        let styleRandom = getRandomInt(1,5);
+        // let styleRandom = 5
         if(styleRandom == 1){
             if(prompt1 == 'Woman, '){
                 promptCombine2 = 'A Woman Samurai Ninja Full Body with cyborg ninja boots and sword blade and futuristic machine guns. Matrix Red light, Cyberpunk Neon Red Light, Conceptual artwork of the human mind, studio portrait style, intricate neural network details at the center, popular on ArtStation, digital painting, sharp focus, highly detailed, enigmatic atmosphere, dramatic lighting, evoking a sense of mystery, atmospheric chiaroscuro, trend-centric composition, digital rendering.'
