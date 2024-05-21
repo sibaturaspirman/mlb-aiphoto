@@ -91,11 +91,19 @@ export default function GenerateAmero() {
             promptSteps = 75
             FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
         }else if(styleRandom == 2){
-            promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, wearing red Ray-Ban frame glasses, sitting with legs crossed inside a spacecraft, looking directly at the camera. The background includes a large, clear window showcasing a view of clouds and the sky at sunset. The interior of the spacecraft is futuristic and luxurious, with advanced controls and ambient lighting that highlights the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman with red Ray-Ban glasses, the spacecraft interior, and the stunning sunset sky view.'
+            if(prompt1 == 'Woman, '){
+                promptCombine2 = 'A photorealistic scene featuring a businesswoman in a black tuxedo with a bow tie, wearing red Ray-Ban frame glasses, sitting with legs crossed inside a spacecraft, looking directly at the camera. The background includes a large, clear window showcasing a view of clouds and the sky at sunset. The interior of the spacecraft is futuristic and luxurious, with advanced controls and ambient lighting that highlights the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businesswoman with red Ray-Ban glasses, the spacecraft interior, and the stunning sunset sky view.'
+            }else{
+                promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, wearing red Ray-Ban frame glasses, sitting with legs crossed inside a spacecraft, looking directly at the camera. The background includes a large, clear window showcasing a view of clouds and the sky at sunset. The interior of the spacecraft is futuristic and luxurious, with advanced controls and ambient lighting that highlights the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman with red Ray-Ban glasses, the spacecraft interior, and the stunning sunset sky view.'
+            }
             promptSteps = 50
             FIXSEEDPILIH = seedGenerate2[getRandomInt(0,2)].number
         }else if(styleRandom == 3){
-            promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, sitting in the back seat of a luxurious Rolls Royce, revealing the opulent interior seats. He is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the man, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman, the Rolls Royce interior, and the luxurious night setting.'
+            if(prompt1 == 'Woman, '){
+                promptCombine2 = 'A photorealistic scene featuring a businesswoman in a black tuxedo with a bow tie, sitting in the back seat of a luxurious Rolls Royce, revealing the opulent interior seats. He is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the man, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businesswoman, the Rolls Royce interior, and the luxurious night setting.'
+            }else{
+                promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, sitting in the back seat of a luxurious Rolls Royce, revealing the opulent interior seats. He is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the man, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman, the Rolls Royce interior, and the luxurious night setting.'
+            }
             promptSteps = 50
             FIXSEEDPILIH = seedGenerate3[getRandomInt(0,2)].number
         }
