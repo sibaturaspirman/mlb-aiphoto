@@ -35,6 +35,16 @@ let seedGenerate = [
     {number : 13084},
     {number : 13229}
 ];
+let seedGenerate2 = [
+    {number : 1690},
+    {number : 1878},
+    {number : 187811}
+];
+let seedGenerate3 = [
+    {number : 18742},
+    {number : 168742},
+    {number : 16874224}
+];
 export default function GenerateAmero() {
     const router = useRouter();
 
@@ -46,9 +56,9 @@ export default function GenerateAmero() {
     const [numProses1, setNumProses1] = useState(null);
 
 
-    const [prompt1, setPrompt1] = useState();
-    const [prompt2, setPrompt2] = useState('Samurai Ninja Full Body with cyborg ninja boots and sword blade and futuristic machine guns. Matrix Red light, Cyberpunk Neon Red Light, Conceptual artwork of the human mind, studio portrait style, intricate neural network details at the center, popular on ArtStation, digital painting, sharp focus, highly detailed, enigmatic atmosphere, dramatic lighting, evoking a sense of mystery, atmospheric chiaroscuro, trend-centric composition, digital rendering.');
-    let promptCombine = prompt1 + prompt2;
+    const [prompt1, setPrompt1] = useState(null);
+    const [prompt2, setPrompt2] = useState(null);
+    let promptCombine, promptCombine2, promptSteps;
     const negative_prompt = DEFAULT_NEG_PROMPT;
     const [fixSeed, setFixSeed] = useState(null);
     const [CGF, setCGF] = useState(12);
@@ -71,21 +81,29 @@ export default function GenerateAmero() {
     }, [imageFile])
 
     const generateAI = () => {
-        // setNumProses1(true)
-        
-        // if(styleGender =='m'){
-        //     setTimeout(() => {
-        //         generateImageSwap(styleGender, getRandomInt(1, 4))
-        //     }, 500);
-        // }else if(styleGender =='f'){
-        //     setTimeout(() => {
-        //         generateImageSwap(styleGender, getRandomInt(1, 6))
-        //     }, 500);
-        // }
 
         setNumProses1(true)
-        FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
+        // FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
+
+        let styleRandom = getRandomInt(1,3);
+        if(styleRandom == 1){
+            promptCombine2 = 'Samurai Ninja Full Body with cyborg ninja boots and sword blade and futuristic machine guns. Matrix Red light, Cyberpunk Neon Red Light, Conceptual artwork of the human mind, studio portrait style, intricate neural network details at the center, popular on ArtStation, digital painting, sharp focus, highly detailed, enigmatic atmosphere, dramatic lighting, evoking a sense of mystery, atmospheric chiaroscuro, trend-centric composition, digital rendering.'
+            promptSteps = 75
+            FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
+        }else if(styleRandom == 2){
+            promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, wearing red Ray-Ban frame glasses, sitting with legs crossed inside a spacecraft, looking directly at the camera. The background includes a large, clear window showcasing a view of clouds and the sky at sunset. The interior of the spacecraft is futuristic and luxurious, with advanced controls and ambient lighting that highlights the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman with red Ray-Ban glasses, the spacecraft interior, and the stunning sunset sky view.'
+            promptSteps = 50
+            FIXSEEDPILIH = seedGenerate2[getRandomInt(0,2)].number
+        }else if(styleRandom == 3){
+            promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, sitting in the back seat of a luxurious Rolls Royce, revealing the opulent interior seats. He is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the man, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman, the Rolls Royce interior, and the luxurious night setting.'
+            promptSteps = 50
+            FIXSEEDPILIH = seedGenerate3[getRandomInt(0,2)].number
+        }
+        console.log(styleRandom)
+        console.log(promptSteps)
         console.log(FIXSEEDPILIH)
+        promptCombine = prompt1 + promptCombine2
+        console.log(promptCombine)
 
         setTimeout(() => {
             generateImage()
@@ -153,7 +171,7 @@ export default function GenerateAmero() {
               face_image_url: imageFile,
               negative_prompt,
               guidance_scale: CGF,
-              num_inference_steps: numSteps,
+              num_inference_steps: promptSteps,
             //   seed: seedGenerate[getRandomInt(0,1)].number,
               seed: FIXSEEDPILIH,
               width: 624,

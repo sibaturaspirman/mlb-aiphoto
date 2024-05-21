@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={outfit.className}>{children}</body>
       {/* <GoogleTagManager gtmId="G-3YWLPQZ3JQ" /> */}
-      <GoogleAnalytics gaId="G-3YWLPQZ3JQ" />
+      <GoogleAnalytics gaId="G-0X14G8YCL8" />
     </html>
   );
 }
