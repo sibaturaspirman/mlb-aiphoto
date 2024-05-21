@@ -40,10 +40,18 @@ let seedGenerate2 = [
     {number : 1878},
     {number : 187811}
 ];
+let seedGenerate2Woman = [
+    {number : 16222},
+    {number : 17416}
+];
 let seedGenerate3 = [
     {number : 18742},
     {number : 168742},
     {number : 16874224}
+];
+let seedGenerate3Woman = [
+    {number : 34122},
+    {number : 16222}
 ];
 export default function GenerateAmero() {
     const router = useRouter();
@@ -92,20 +100,22 @@ export default function GenerateAmero() {
             FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
         }else if(styleRandom == 2){
             if(prompt1 == 'Woman, '){
-                promptCombine2 = 'A photorealistic scene featuring a businesswoman in a black tuxedo with a bow tie, wearing red Ray-Ban frame glasses, sitting with legs crossed inside a spacecraft, looking directly at the camera. The background includes a large, clear window showcasing a view of clouds and the sky at sunset. The interior of the spacecraft is futuristic and luxurious, with advanced controls and ambient lighting that highlights the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businesswoman with red Ray-Ban glasses, the spacecraft interior, and the stunning sunset sky view.'
+                promptCombine2 = 'An artistic depiction of a businesswoman in a modest dress, sitting in a private jet with her face towards the camera. The background features a large, clear window with visible clouds and sky. The ambient lighting creates a sophisticated atmosphere, emphasizing the elegance of the woman and the luxurious details of the jet interior. The artwork highlights the serene and luxurious setting. Art Style: Realistic Illustration, Lighting: Soft and Ambient, evoking a sense of luxury and sophistication.'
+                FIXSEEDPILIH = seedGenerate2Woman[getRandomInt(0,1)].number
             }else{
                 promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, wearing red Ray-Ban frame glasses, sitting with legs crossed inside a spacecraft, looking directly at the camera. The background includes a large, clear window showcasing a view of clouds and the sky at sunset. The interior of the spacecraft is futuristic and luxurious, with advanced controls and ambient lighting that highlights the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman with red Ray-Ban glasses, the spacecraft interior, and the stunning sunset sky view.'
+                FIXSEEDPILIH = seedGenerate2[getRandomInt(0,2)].number
             }
             promptSteps = 50
-            FIXSEEDPILIH = seedGenerate2[getRandomInt(0,2)].number
         }else if(styleRandom == 3){
             if(prompt1 == 'Woman, '){
-                promptCombine2 = 'A photorealistic scene featuring a businesswoman in a black tuxedo with a bow tie, sitting in the back seat of a luxurious Rolls Royce, revealing the opulent interior seats. He is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the man, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businesswoman, the Rolls Royce interior, and the luxurious night setting.'
+                promptCombine2 = 'A photorealistic scene featuring a woman in a (((red modest dress))), sitting in the back seat of a luxuraious Rolls Royce, revealing the opulent interior seats. She is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the woman, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the woman, the Rolls Royce interior, and the luxurious night setting.'
+                FIXSEEDPILIH = seedGenerate3Woman[getRandomInt(0,1)].number
             }else{
                 promptCombine2 = 'A photorealistic scene featuring a businessman in a black tuxedo with a bow tie, sitting in the back seat of a luxurious Rolls Royce, revealing the opulent interior seats. He is wearing an expensive watch, and the scene is set at night. The ambient lighting highlights the elegance of the man, the luxurious details of the Rolls Royce, and the sophisticated atmosphere. Realistic Photograph, Medium Shot, capturing the detailed essence of the businessman, the Rolls Royce interior, and the luxurious night setting.'
+                FIXSEEDPILIH = seedGenerate3[getRandomInt(0,2)].number
             }
             promptSteps = 50
-            FIXSEEDPILIH = seedGenerate3[getRandomInt(0,2)].number
         }
         console.log(styleRandom)
         console.log(promptSteps)
