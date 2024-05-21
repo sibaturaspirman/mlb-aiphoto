@@ -40,8 +40,6 @@ let roomCode = gfg()
 
 
 export default function MLBHome() {
-  document.addEventListener('contextmenu', event => event.preventDefault());
-  
   const router = useRouter();
   const [generateQR, setGenerateQR] = useState(null);
   const [linkQR, setLinkQR] = useState('https://zirolu.id/');

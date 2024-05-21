@@ -54,8 +54,6 @@ let seedGenerate3Woman = [
     {number : 16222}
 ];
 export default function GenerateAmero() {
-    document.addEventListener('contextmenu', event => event.preventDefault());
-  
     const router = useRouter();
 
     const [imageFile, setImageFile] = useState(null);

@@ -9,8 +9,6 @@ import { Poppins} from "next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 
 export default function MLBHome() {
-  document.addEventListener('contextmenu', event => event.preventDefault());
-
   const router = useRouter();
   const [stasiun, setStasiun] = useState(null);
   const [data, setData] = useState(null)
@@ -57,7 +55,7 @@ export default function MLBHome() {
 }
 
   return (
-    <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center  py-16 px-20">
+    <main className="flex fixed h-full w-full bg-kai overflow-auto flex-col justify-center items-center  py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
       <div className="relative w-[90%] mt-5 mb-10 lg:mt-20 lg:mb-14">
         <div className='relative w-full hiddenx'>
             <label htmlFor="choose_stasiun" className={`block mb-5 lg:mb-5 text-2xl lg:text-5xl text-center font-bold text-white ${poppins.className}`}>Pilih Lokasi</label>
