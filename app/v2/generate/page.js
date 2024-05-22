@@ -54,12 +54,13 @@ let seedGenerate3Woman = [
     {number : 16222}
 ];
 let seedGenerate4 = [
-    {number : 14126},
-    {number : 13364}
+    {number : 241364},
+    {number : 281366},
+    {number : 281366}
 ];
-let seedGenerate5 = [
-    {number : 13144},
-    {number : 13364}
+let seedGenerate4Woman = [
+    {number : 241364},
+    {number : 281362}
 ];
 export default function GenerateAmero() {
     const router = useRouter();
@@ -131,23 +132,26 @@ export default function GenerateAmero() {
             promptSteps = 50
         }else if(styleRandom == 4){
             if(prompt1 == 'Woman, '){
-                promptCombine2 = "A photorealistic image of a woman surrounded by (((red cyber effects))), embodying the essence of a supercomputer and digital technology. The image includes elements such as digital codes, circuits, and (((red holographic interfaces))), creating a visual transition into the cyber world. The man's face and body seamlessly integrate with these technological elements, highlighting the advanced interconnected nature of cyber technology. Realistic Photograph, Medium Shot, capturing the detailed fusion of human and digital technology with vibrant colors and red glitch effects, high resolution, hyper detailed, UHD."
-                // FIXSEEDPILIH = 13364
-            }else{
-                promptCombine2 = "A photorealistic image of a man surrounded by (((red cyber effects))), embodying the essence of a supercomputer and digital technology. The image includes elements such as digital codes, circuits, and (((red holographic interfaces))), creating a visual transition into the cyber world. The man's face and body seamlessly integrate with these technological elements, highlighting the advanced interconnected nature of cyber technology. Realistic Photograph, Medium Shot, capturing the detailed fusion of human and digital technology with vibrant colors and red glitch effects, high resolution, hyper detailed, UHD."
-                // FIXSEEDPILIH = 13364
-            }
-            FIXSEEDPILIH = seedGenerate4[getRandomInt(0,1)].number
-            promptSteps = 50
-        }else if(styleRandom == 5){
-            if(prompt1 == 'Woman, '){
                 promptCombine2 = "In a realm where quantum mysteries unfold, there stands the Supercomputer Woman. His face, a fusion of human and machine, glows with circuit (((red patterns))) and microchips. Over his features dances a quantum display: entangled particles, wave functions, and holographic grids in (((vibrant red))). The interplay of soft and stark lighting adds depth, emphasizing his profound intelligence and the seamless union of human and quantum power."
+                // FIXSEEDPILIH = 13364
+                FIXSEEDPILIH = seedGenerate4Woman[getRandomInt(0,1)].number
             }else{
                 promptCombine2 = "In a realm where quantum mysteries unfold, there stands the Supercomputer Man. His face, a fusion of human and machine, glows with circuit (((red patterns))) and microchips. Over his features dances a quantum display: entangled particles, wave functions, and holographic grids in (((vibrant red))). The interplay of soft and stark lighting adds depth, emphasizing his profound intelligence and the seamless union of human and quantum power."
+                // FIXSEEDPILIH = 13364
+                FIXSEEDPILIH = seedGenerate4[getRandomInt(0,2)].number
             }
-            FIXSEEDPILIH = seedGenerate5[getRandomInt(0,1)].number
             promptSteps = 50
         }
+        
+        // else if(styleRandom == 5){
+        //     if(prompt1 == 'Woman, '){
+        //         promptCombine2 = "In a realm where quantum mysteries unfold, there stands the Supercomputer Woman. His face, a fusion of human and machine, glows with circuit (((red patterns))) and microchips. Over his features dances a quantum display: entangled particles, wave functions, and holographic grids in (((vibrant red))). The interplay of soft and stark lighting adds depth, emphasizing his profound intelligence and the seamless union of human and quantum power."
+        //     }else{
+        //         promptCombine2 = "In a realm where quantum mysteries unfold, there stands the Supercomputer Man. His face, a fusion of human and machine, glows with circuit (((red patterns))) and microchips. Over his features dances a quantum display: entangled particles, wave functions, and holographic grids in (((vibrant red))). The interplay of soft and stark lighting adds depth, emphasizing his profound intelligence and the seamless union of human and quantum power."
+        //     }
+        //     FIXSEEDPILIH = seedGenerate5[getRandomInt(0,1)].number
+        //     promptSteps = 50
+        // }
         console.log(styleRandom)
         console.log(promptSteps)
         console.log(FIXSEEDPILIH)
