@@ -50,7 +50,7 @@ export default function MLBHome() {
   });
 
   useEffect(() => {
-    let urlContent = 'https://discoveryournextjourney.com/g/'+payload.stasiun+"/"+roomCode.toString()
+    let urlContent = 'https://ai.discoveryournextjourney.com/g/'+payload.stasiun+"/"+roomCode.toString()
     setLinkQR(urlContent)
   }, [linkQR])
 
