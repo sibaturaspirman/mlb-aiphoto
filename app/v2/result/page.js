@@ -36,6 +36,12 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
+        gtag('event', 'Click', {
+            event_category: 'Button',
+            event_label: 'ResultPage',
+            event_action: 'CollectYourPhoto'
+        })
+        
         import('html2canvas').then(html2canvas => {
             html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
                 uploadImage(canvas)
@@ -80,6 +86,13 @@ export default function Result() {
                 });
         });
     }
+    const backHome = () => {
+        gtag('event', 'Click', {
+            event_category: 'Button',
+            event_label: 'ResultPage',
+            event_action: 'BackToHome'
+        })
+    }
 
     
 
@@ -122,7 +135,7 @@ export default function Result() {
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
                     <div className={`fixed left-0 bottom-0 w-full`}>
-                        <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                        <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col" onClick={backHome}>
                             <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
                                 <Image src='/btn-back2.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                             </Link>
@@ -151,13 +164,13 @@ export default function Result() {
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
-                    <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`}>
                         <div className={`w-full mt-14`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
+                                <div className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
                                     <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
                                 </div>
-                                <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center">
+                                <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center" onClick={backHome}>
                                     <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>

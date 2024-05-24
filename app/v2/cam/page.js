@@ -103,6 +103,14 @@ export default function Cam() {
     const retake = () => {
         setEnabled(false)
     }
+
+    const generate = () => {
+        gtag('event', 'Click', {
+            event_category: 'Button',
+            event_label: 'TakePhoto',
+            event_action: 'Next'
+        })
+    }
     return (
         <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className='fixed top-14 w-[65%]'>
@@ -142,7 +150,7 @@ export default function Cam() {
             }
             <div className={`fixed left-0 bottom-14 w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                    <Link href='/v2/generate' className="w-full relative mx-auto flex justify-center items-center">
+                    <Link href='/v2/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={generate}>
                         <Image src='/btn-next.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center" onClick={retake}>

@@ -33,7 +33,7 @@ export default function MLBHome() {
       console.log(result)
       displayData = result.data.map(function(todo){
         return (
-          <li key={todo.id}><input id={`choose_stasiun${todo.id}`} type="radio" name='choose_stasiun' value={todo.id} onChange={(e) => setStasiun(e.target.value)}/><label htmlFor={`choose_stasiun${todo.id}`} className='text-2xl lg:h-[140px] lg:text-4xl'>{todo.name}</label></li>
+          <li key={todo.id}><input id={`choose_stasiun${todo.id}`} type="radio" name='choose_stasiun' value={todo.name} onChange={(e) => setStasiun(e.target.value)}/><label htmlFor={`choose_stasiun${todo.id}`} className='text-2xl lg:h-[140px] lg:text-4xl'>{todo.name}</label></li>
         )
       })
 
@@ -49,6 +49,13 @@ export default function MLBHome() {
 
   const handleSubmit = () => {
     setCookie('stasiun', stasiun);
+
+    gtag('event', 'Click', {
+      event_category: 'Button',
+      event_label: stasiun,
+      event_action: 'Continue'
+    })
+
     setTimeout(() => {
         router.push('/v2/home');
     }, 250);

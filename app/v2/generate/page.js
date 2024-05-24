@@ -98,6 +98,19 @@ export default function GenerateAmero() {
     }, [imageFile])
 
     const generateAI = () => {
+        if(prompt1 == 'Woman, '){
+            gtag('event', 'Click', {
+                event_category: 'Button',
+                event_label: 'Female',
+                event_action: 'SupriseMe'
+            })
+        }else{
+            gtag('event', 'Click', {
+                event_category: 'Button',
+                event_label: 'Male',
+                event_action: 'SupriseMe'
+            })
+        }
 
         setNumProses1(true)
         // FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
@@ -311,6 +324,13 @@ export default function GenerateAmero() {
         }
         // @snippet:end
     };
+    const backHome = () => {
+        gtag('event', 'Click', {
+            event_category: 'Button',
+            event_label: 'IdentifyYourself',
+            event_action: 'BackToHome'
+        })
+    }
 
     return (
         <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -397,7 +417,7 @@ export default function GenerateAmero() {
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!prompt1 ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center">
+                        <Link href='/v2/home' className="relative w-full mx-auto flex justify-center items-center" onClick={backHome}>
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
