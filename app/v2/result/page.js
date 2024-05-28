@@ -22,6 +22,7 @@ export default function Result() {
       name: 'MLB',
       phone: '001',
       stasiun: getCookie('stasiun'),
+      stasiunName: getCookie('stasiunName'),
     });
     const { Canvas } = useQRCode();
 
@@ -36,9 +37,9 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
-        gtag('event', 'Click', {
+        gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'ResultPage',
+            event_label: 'ResultPage - '+payload.stasiunName,
             event_action: 'CollectYourPhoto'
         })
         
@@ -55,7 +56,7 @@ export default function Result() {
             let bodyFormData = new FormData();
             bodyFormData.append("name", payload.name);
             bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("totemId", 1);
+            bodyFormData.append("totemId", payload.stasiun);
             bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
           
             const options = {
@@ -87,9 +88,9 @@ export default function Result() {
         });
     }
     const backHome = () => {
-        gtag('event', 'Click', {
+        gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'ResultPage',
+            event_label: 'ResultPage - '+payload.stasiunName,
             event_action: 'BackToHome'
         })
     }

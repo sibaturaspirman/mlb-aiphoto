@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
 // import { Poppins} from "next/font/google";
 // const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // import io from 'socket.io-client';
@@ -72,6 +73,10 @@ export default function GenerateAmero() {
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
 
+    const [payload, setPayload] = useState({
+      stasiun: getCookie('stasiun'),
+      stasiunName: getCookie('stasiunName'),
+    });
 
     const [prompt1, setPrompt1] = useState(null);
     const [prompt2, setPrompt2] = useState(null);
@@ -99,15 +104,15 @@ export default function GenerateAmero() {
 
     const generateAI = () => {
         if(prompt1 == 'Woman, '){
-            gtag('event', 'Click', {
+            gtag('event', 'ClickButton', {
                 event_category: 'Button',
-                event_label: 'Female',
+                event_label: 'Female - '+payload.stasiunName,
                 event_action: 'SupriseMe'
             })
         }else{
-            gtag('event', 'Click', {
+            gtag('event', 'ClickButton', {
                 event_category: 'Button',
-                event_label: 'Male',
+                event_label: 'Male - '+payload.stasiunName,
                 event_action: 'SupriseMe'
             })
         }
@@ -325,9 +330,9 @@ export default function GenerateAmero() {
         // @snippet:end
     };
     const backHome = () => {
-        gtag('event', 'Click', {
+        gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'IdentifyYourself',
+            event_label: 'IdentifyYourself - '+payload.stasiunName,
             event_action: 'BackToHome'
         })
     }

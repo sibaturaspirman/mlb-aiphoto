@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 // import { Poppins} from "next/font/google";
 // const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -32,6 +33,11 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+
+    const [payload, setPayload] = useState({
+      stasiun: getCookie('stasiun'),
+      stasiunName: getCookie('stasiunName'),
+    });
 
     useWebcam({ videoRef,previewRef});
 
@@ -105,9 +111,9 @@ export default function Cam() {
     }
 
     const generate = () => {
-        gtag('event', 'Click', {
+        gtag('event', 'ClickButton', {
             event_category: 'Button',
-            event_label: 'TakePhoto',
+            event_label: 'TakePhoto - '+payload.stasiunName,
             event_action: 'Next'
         })
     }
