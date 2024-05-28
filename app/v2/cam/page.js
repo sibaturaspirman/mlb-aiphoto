@@ -108,6 +108,11 @@ export default function Cam() {
 
     const retake = () => {
         setEnabled(false)
+        gtag('event', 'ClickButton', {
+            event_category: 'Button',
+            event_label: 'Retake - '+payload.stasiunName,
+            event_action: 'Next'
+        })
     }
 
     const generate = () => {
