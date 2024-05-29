@@ -2,7 +2,7 @@
 
 import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 // import { Poppins} from "next/font/google";
 // const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 import { getCookie } from 'cookies-next';
@@ -63,12 +63,14 @@ let seedGenerate4Woman = [
     {number : 241364},
     {number : 281362}
 ];
+// let videoLoading = document.getElementById('videoLoading')
 export default function GenerateAmero() {
     const router = useRouter();
 
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
+    const videoRef = useRef(null);
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -118,6 +120,11 @@ export default function GenerateAmero() {
         }
 
         setNumProses1(true)
+        // console.log(videoLoading)
+        // videoLoading.play()
+        // document.getElementById('videoLoading').play()
+        // videoRef.current.play;
+        // console.log(videoRef)
         // FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
 
         let styleRandom = getRandomInt(1,5);
@@ -340,25 +347,31 @@ export default function GenerateAmero() {
     return (
         <main className="flex fixed h-full w-full bg-kai2 overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
             {numProses1 && 
-                <div className='absolute top-[-18vh] left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
+                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
                     <div className='relative w-[80%] overflow-hidden'>
                         <div className='relative w-full'>
                             <Image src='/explore.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div>
-                    <div className='animate-upDownCepet relative p-8 mt-24 text-4xl border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] font-bold rounded-lg'>
+                    <div className='animate-upDownCepet relative p-8 mt-8 mb-10 text-4xl border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
-                    <pre className='relative p-5 mt-24 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
+                    <pre className='relative p-5 mt-14 border-2 border-[#b1454a] text-left bg-[#CF1F29] text-[#fff] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
                         AI generate face... <br></br>
                         Loading model..<br></br>
                     </pre>
+
+                    {/* <div className='w-full flex items-center justify-center'>
+                        <video id='videoLoading' ref={videoRef} autoPlay width="760"  preload="none" playsInline>
+                            <source src="/video.mp4" type="video/mp4"/>
+                        </video>
+                    </div> */}
                 </div>
             }
             {/* LOADING */}
