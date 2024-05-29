@@ -1,6 +1,7 @@
 'use client';
 
 import * as fal from '@fal-ai/serverless-client';
+import ReactPlayer from 'react-player'
 import Image from "next/image";
 import { useEffect, useState, useMemo, useRef } from 'react';
 // import { Poppins} from "next/font/google";
@@ -63,14 +64,13 @@ let seedGenerate4Woman = [
     {number : 241364},
     {number : 281362}
 ];
-// let videoLoading = document.getElementById('videoLoading')
 export default function GenerateAmero() {
     const router = useRouter();
 
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
-    const videoRef = useRef(null);
+    const [playVideo, setPlayVideo] = useState(false);
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -120,12 +120,6 @@ export default function GenerateAmero() {
         }
 
         setNumProses1(true)
-        // console.log(videoLoading)
-        // videoLoading.play()
-        // document.getElementById('videoLoading').play()
-        // videoRef.current.play;
-        // console.log(videoRef)
-        // FIXSEEDPILIH = seedGenerate[getRandomInt(0,3)].number
 
         let styleRandom = getRandomInt(1,5);
         // let styleRandom = 4
@@ -177,6 +171,7 @@ export default function GenerateAmero() {
         //     FIXSEEDPILIH = seedGenerate5[getRandomInt(0,1)].number
         //     promptSteps = 50
         // }
+        setPlayVideo(true)
         console.log(styleRandom)
         console.log(promptSteps)
         console.log(FIXSEEDPILIH)
@@ -367,11 +362,9 @@ export default function GenerateAmero() {
                         Loading model..<br></br>
                     </pre>
 
-                    {/* <div className='w-full flex items-center justify-center'>
-                        <video id='videoLoading' ref={videoRef} autoPlay width="760"  preload="none" playsInline>
-                            <source src="/video.mp4" type="video/mp4"/>
-                        </video>
-                    </div> */}
+                    <div className='w-full flex items-center justify-center'>
+                        <ReactPlayer url={['/videoLoading.mp4']}  playing={playVideo} loop width={555} height={1174} />
+                    </div>
                 </div>
             }
             {/* LOADING */}
